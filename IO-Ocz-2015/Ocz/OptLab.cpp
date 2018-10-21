@@ -48,20 +48,90 @@ void Filter(const BYTE *inputImage, BYTE *outputImage, const int width, const in
 // Changes commented (better/worse)
 // Test #1, Linking loops outputImage: 5.449, 5.371, 5.412.
 // Test #2, inline GetIndex: 3.046, 3.198, 3.261.
+// Test #3, Loop reorganizing: 2.735, 2.842, 2.804.
+
+/*
+Bardzo zmienny nam siê czas wiêc opisujemy pomys³y na optymalizacjê - nie mam jak ich zweryfikowaæ.
+Punkt 6 najwa¿niejszy!!!
+ 
+1. po³¹czenie pêtli  przeniesienie zawartoœci outputImage[GetIndex(i, j, width)] = 0; do podwójnej pêtli poni¿ej - wolniej o ok 2s.
+2. dodanie inline do GetIndex przyœpieszenie ok 0,5s
+3. zamiana GetIndex  na dzia³anie "na sztywno" np. w 63l. na outputImage[i + j*width] = 0; 
+        //przy testach by³y wachania o 3 sek, ale po zmianie wydawa³y siê wolniejsze
+4. usuniêcie if (i != 0 && j != 0 && i != width - 1 && j != height - 1)
+        i zmiana zewnêtrznych pêtli na
+        for (i = 1; i < width-1; ++i)
+        for (j = 1; j < height-1; ++j)
+        spowolni³a z ~17 do 19,8s, ale po przywróceniu zmian 18,39-21,2s (bardzo du¿e wachania), tak¿e byæ mo¿e to zoptymalizowa³o
+ 
+5.      obliczenie wartoœci do zmiennej buf i wklejenie jej w warunek (mneij obliczeñ)
+buf = inputImage[GetIndex(i + l, j + k, width)] / 28.0;
+ 
+if ((k == 0 && l != 0) || (l == 0 && k != 0))
+sum += 4.0 * buf;
+else if (k == 0 && l == 0)
+sum += 8.0 * buf;
+else
+sum += buf;
+ 
+6.pêtle wykonuj¹ tylko po 3 iteracje, lepiej by by³o z³amaæ zasadê DRY i wklejiæ ten sam kod po 3x czyli dla 9przypadków
+        for (k = -1; k <= 1; ++k)
+                for (l = -1; l <= 1; ++l) 
+ 
+        przypadki:
+                k = -1;l = -1;
+                k = -1;l = 0;
+                k = -1;l = 1;
+ 
+                k = 0;l = -1;
+                k = 0;l = 0;
+                k = 0;l = 1;
+ 
+                k = 1;l = -1;
+                k = 1;l = 0;
+                k = 1;l = 1;
+ 
+                teraz mo¿na zrezygnowaæ z konstrukcji if-elseif-else i poprostu wkleiæ fragment kodu pod przypadkami gdy jest spe³niony.
+                tj:
+ 
+                k = -1;l = -1;
+                        sum += inputImage[GetIndex(i + l, j + k, width)] / 28.0;                //else
+                k = -1;l = 0;
+                sum += 4.0 * inputImage[GetIndex(i + l, j + k, width)] / 28.0;
+                k = -1;l = 1;
+                        sum += inputImage[GetIndex(i + l, j + k, width)] / 28.0;                //else
+ 
+                k = 0;l = -1;
+                sum += 4.0 * inputImage[GetIndex(i + l, j + k, width)] / 28.0;
+                k = 0;l = 0;
+                sum += 8.0 * inputImage[GetIndex(i + l, j + k, width)] / 28.0;          //else if
+                k = 0;l = 1;
+                sum += 4.0 * inputImage[GetIndex(i + l, j + k, width)] / 28.0;
+ 
+                k = 1;l = -1;
+                        sum += inputImage[GetIndex(i + l, j + k, width)] / 28.0;                //else
+                k = 1;l = 0;
+                sum += 4.0 * inputImage[GetIndex(i + l, j + k, width)] / 28.0;
+                k = 1;l = 1;
+                        sum += inputImage[GetIndex(i + l, j + k, width)] / 28.0;                //else
+ 7. W pêtlach wystêpuje preinkrementacja wiêc przypadki z -1 odpadaj¹.
+ 
+ 
+*/
 void Filter_optimized(const BYTE *inputImage, BYTE *outputImage, const int width, const int height)
 {
 	int i, j, k, l;
 	double sum;
 
-	//for (j = 0; j < height; ++j)
-	//	for (i = 0; i < width; ++i)
-	//		outputImage[GetIndex(i, j, width)] = 0;
+	for (j = 0; j < height; ++j) //Test #3
+		for (i = 0; i < width; ++i) //Test #3
+			outputImage[GetIndex(i, j, width)] = 0; //Test #3
 
-	for (i = 0; i < width; ++i)
-		for (j = 0; j < height; ++j)
+	for (i = 1; i < width - 1; ++i) //Test #3
+		for (j = 1; j < height - 1; ++j) //Test #3
 		{
-		outputImage[GetIndex(i, j, width)] = 0;
-		if (i != 0 && j != 0 && i != width - 1 && j != height - 1)
+		outputImage[GetIndex(i, j, width)] = 0; //Test #1
+		//if (i != 0 && j != 0 && i != width - 1 && j != height - 1)  //Test #3
 		{
 			sum = 0.0;
 
