@@ -43,10 +43,11 @@ void Filter(const BYTE *inputImage, BYTE *outputImage, const int width, const in
 		}
 }
 
-// Hardware: Personal Notebook: i7 8th Gen
+// Hardware: Personal Notebook: i7 8th Gen, 8550U
 // Start Times: 4.735, 5.187, 5.219.
-// Change #1, Linking loops outputImage: 5.449, 5.371, 5.412.
 // Changes commented (better/worse)
+// Test #1, Linking loops outputImage: 5.449, 5.371, 5.412.
+// Test #2, inline GetIndex: 3.046, 3.198, 3.261.
 void Filter_optimized(const BYTE *inputImage, BYTE *outputImage, const int width, const int height)
 {
 	int i, j, k, l;
@@ -82,7 +83,7 @@ void Filter_optimized(const BYTE *inputImage, BYTE *outputImage, const int width
 
 
 
-int GetIndex(int x, int y, int w)
+inline int GetIndex(int x, int y, int w)
 {
 	return x + y * w;
 }
