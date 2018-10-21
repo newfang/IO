@@ -43,20 +43,23 @@ void Filter(const BYTE *inputImage, BYTE *outputImage, const int width, const in
 		}
 }
 
-// Start Time 5s
+// Hardware: Personal Notebook: i7 8th Gen
+// Start Times: 4.735, 5.187, 5.219.
+// Change #1, Linking loops outputImage: 5.449, 5.371, 5.412.
 // Changes commented (better/worse)
 void Filter_optimized(const BYTE *inputImage, BYTE *outputImage, const int width, const int height)
 {
 	int i, j, k, l;
 	double sum;
 
-	for (j = 0; j < height; ++j)
-		for (i = 0; i < width; ++i)
-			outputImage[GetIndex(i, j, width)] = 0;
+	//for (j = 0; j < height; ++j)
+	//	for (i = 0; i < width; ++i)
+	//		outputImage[GetIndex(i, j, width)] = 0;
 
 	for (i = 0; i < width; ++i)
 		for (j = 0; j < height; ++j)
 		{
+		outputImage[GetIndex(i, j, width)] = 0;
 		if (i != 0 && j != 0 && i != width - 1 && j != height - 1)
 		{
 			sum = 0.0;
