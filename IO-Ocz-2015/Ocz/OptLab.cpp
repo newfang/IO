@@ -43,28 +43,32 @@ void Filter(const BYTE *inputImage, BYTE *outputImage, const int width, const in
 		}
 }
 
-// Hardware: Personal Notebook: i7 8th Gen, 8550U
-// Start Times: 4.735, 5.187, 5.219.
-// Changes commented (better/worse)
-// Test #1, Linking loops outputImage: 5.449, 5.371, 5.412.
-// Test #2, inline GetIndex: 3.046, 3.198, 3.261.
-// Test #3, Loop reorganizing: 2.735, 2.842, 2.804.
-
 /*
-Bardzo zmienny nam siê czas wiêc opisujemy pomys³y na optymalizacjê - nie mam jak ich zweryfikowaæ.
+Testów dokonano na dwóch maszynach: laptopie i maszynie wirtualnej. Specyfikacje i wyniki podano poni¿ej.
+
+#1 Laptop
+Hardware: Personal Notebook: i7 8th Gen, 8550U
+ Start Times: 4.735, 5.187, 5.219.
+ Changes commented (better/worse)
+ Test 1. Linking loops outputImage: 5.449, 5.371, 5.412.
+ Test 2. inline GetIndex: 3.046, 3.198, 3.261.
+ Test 3. Loop reorganizing: 2.735, 2.842, 2.804.
+
+#2 Maszyna wirtualna
+Czas wykonania na maszynie wirtualnej okaza³ siê bardzo zmienny wiêc opisujemy pomys³y na optymalizacjê - nie mam jak ich zweryfikowaæ.
 Punkt 6 najwa¿niejszy!!!
  
-1. po³¹czenie pêtli  przeniesienie zawartoœci outputImage[GetIndex(i, j, width)] = 0; do podwójnej pêtli poni¿ej - wolniej o ok 2s.
-2. dodanie inline do GetIndex przyœpieszenie ok 0,5s
-3. zamiana GetIndex  na dzia³anie "na sztywno" np. w 63l. na outputImage[i + j*width] = 0; 
+Test 5. Po³¹czenie pêtli  przeniesienie zawartoœci outputImage[GetIndex(i, j, width)] = 0; do podwójnej pêtli poni¿ej - wolniej o ok 2s.
+Test 6. Dodanie inline do GetIndex przyœpieszenie ok 0,5s
+Test 7. Zamiana GetIndex  na dzia³anie "na sztywno" np. w 63l. na outputImage[i + j*width] = 0; 
         //przy testach by³y wachania o 3 sek, ale po zmianie wydawa³y siê wolniejsze
-4. usuniêcie if (i != 0 && j != 0 && i != width - 1 && j != height - 1)
+Test 8. Usuniêcie if (i != 0 && j != 0 && i != width - 1 && j != height - 1)
         i zmiana zewnêtrznych pêtli na
         for (i = 1; i < width-1; ++i)
         for (j = 1; j < height-1; ++j)
         spowolni³a z ~17 do 19,8s, ale po przywróceniu zmian 18,39-21,2s (bardzo du¿e wachania), tak¿e byæ mo¿e to zoptymalizowa³o
  
-5.      obliczenie wartoœci do zmiennej buf i wklejenie jej w warunek (mneij obliczeñ)
+Test 9. Obliczenie wartoœci do zmiennej buf i wklejenie jej w warunek (mneij obliczeñ)
 buf = inputImage[GetIndex(i + l, j + k, width)] / 28.0;
  
 if ((k == 0 && l != 0) || (l == 0 && k != 0))
@@ -74,7 +78,7 @@ sum += 8.0 * buf;
 else
 sum += buf;
  
-6.pêtle wykonuj¹ tylko po 3 iteracje, lepiej by by³o z³amaæ zasadê DRY i wklejiæ ten sam kod po 3x czyli dla 9przypadków
+Test 10. Pêtle wykonuj¹ tylko po 3 iteracje, lepiej by by³o z³amaæ zasadê DRY i wklejiæ ten sam kod po 3x czyli dla 9przypadków
         for (k = -1; k <= 1; ++k)
                 for (l = -1; l <= 1; ++l) 
  
@@ -114,9 +118,7 @@ sum += buf;
                 sum += 4.0 * inputImage[GetIndex(i + l, j + k, width)] / 28.0;
                 k = 1;l = 1;
                         sum += inputImage[GetIndex(i + l, j + k, width)] / 28.0;                //else
- 7. W pêtlach wystêpuje preinkrementacja wiêc przypadki z -1 odpadaj¹.
- 
- 
+ Test 11. W pêtlach wystêpuje preinkrementacja wiêc przypadki z -1 odpadaj¹.
 */
 void Filter_optimized(const BYTE *inputImage, BYTE *outputImage, const int width, const int height)
 {

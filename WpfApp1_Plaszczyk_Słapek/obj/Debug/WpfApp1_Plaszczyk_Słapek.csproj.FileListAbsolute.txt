@@ -1,0 +1,14 @@
+C:\Users\Tomasz.TMP-NBDELLN\OneDrive\01_STUDIA\02_INF\A3_IO\IO\WpfApp1_Plaszczyk_Słapek\bin\Debug\WpfApp1_Plaszczyk_Słapek.exe.config
+C:\Users\Tomasz.TMP-NBDELLN\OneDrive\01_STUDIA\02_INF\A3_IO\IO\WpfApp1_Plaszczyk_Słapek\bin\Debug\WpfApp1_Plaszczyk_Słapek.exe
+C:\Users\Tomasz.TMP-NBDELLN\OneDrive\01_STUDIA\02_INF\A3_IO\IO\WpfApp1_Plaszczyk_Słapek\bin\Debug\WpfApp1_Plaszczyk_Słapek.pdb
+C:\Users\Tomasz.TMP-NBDELLN\OneDrive\01_STUDIA\02_INF\A3_IO\IO\WpfApp1_Plaszczyk_Słapek\obj\Debug\MainWindow.g.cs
+C:\Users\Tomasz.TMP-NBDELLN\OneDrive\01_STUDIA\02_INF\A3_IO\IO\WpfApp1_Plaszczyk_Słapek\obj\Debug\App.g.cs
+C:\Users\Tomasz.TMP-NBDELLN\OneDrive\01_STUDIA\02_INF\A3_IO\IO\WpfApp1_Plaszczyk_Słapek\obj\Debug\WpfApp1_Plaszczyk_Słapek_MarkupCompile.cache
+C:\Users\Tomasz.TMP-NBDELLN\OneDrive\01_STUDIA\02_INF\A3_IO\IO\WpfApp1_Plaszczyk_Słapek\obj\Debug\WpfApp1_Plaszczyk_Słapek_MarkupCompile.lref
+C:\Users\Tomasz.TMP-NBDELLN\OneDrive\01_STUDIA\02_INF\A3_IO\IO\WpfApp1_Plaszczyk_Słapek\obj\Debug\MainWindow.baml
+C:\Users\Tomasz.TMP-NBDELLN\OneDrive\01_STUDIA\02_INF\A3_IO\IO\WpfApp1_Plaszczyk_Słapek\obj\Debug\WpfApp1_Plaszczyk_Słapek.g.resources
+C:\Users\Tomasz.TMP-NBDELLN\OneDrive\01_STUDIA\02_INF\A3_IO\IO\WpfApp1_Plaszczyk_Słapek\obj\Debug\WpfApp1_Plaszczyk_Słapek.Properties.Resources.resources
+C:\Users\Tomasz.TMP-NBDELLN\OneDrive\01_STUDIA\02_INF\A3_IO\IO\WpfApp1_Plaszczyk_Słapek\obj\Debug\WpfApp1_Plaszczyk_Słapek.csproj.GenerateResource.Cache
+C:\Users\Tomasz.TMP-NBDELLN\OneDrive\01_STUDIA\02_INF\A3_IO\IO\WpfApp1_Plaszczyk_Słapek\obj\Debug\WpfApp1_Plaszczyk_Słapek.csproj.CoreCompileInputs.cache
+C:\Users\Tomasz.TMP-NBDELLN\OneDrive\01_STUDIA\02_INF\A3_IO\IO\WpfApp1_Plaszczyk_Słapek\obj\Debug\WpfApp1_Plaszczyk_Słapek.exe
+C:\Users\Tomasz.TMP-NBDELLN\OneDrive\01_STUDIA\02_INF\A3_IO\IO\WpfApp1_Plaszczyk_Słapek\obj\Debug\WpfApp1_Plaszczyk_Słapek.pdb
