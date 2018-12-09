@@ -12,21 +12,19 @@
                 <Grid Background="#FFE5E5E5">
                     <Label Content="Data" HorizontalAlignment="Left" Height="30" Margin="20,40,0,0" VerticalAlignment="Top" Width="50"/>
                     <Label Content="Opis" HorizontalAlignment="Left" Height="30" Margin="20,100,0,0" VerticalAlignment="Top" Width="50"/>
-                    <DatePicker HorizontalAlignment="Left" VerticalAlignment="Top" Margin="200,45,0,0"/>
-                    <TextBox HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="Pierwsze zadanie" VerticalAlignment="Top" Width="120" Margin="200,100,0,0"/>
-                    <CheckBox Content="Ważne zadanie" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="30,220,0,0"/>
-                    <Button Content="Dodaj" HorizontalAlignment="Left" VerticalAlignment="Top" Width="513" Margin="0,240,-0.2,0" Height="46"/>
+                    <DatePicker x:Name="DB" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="200,45,0,0"/>
+                    <TextBox x:Name="TXB_01" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="Pierwsze zadanie" VerticalAlignment="Top" Width="120" Margin="200,100,0,0"/>
+                    <CheckBox x:Name="CHB_01" Content="Ważne zadanie" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="30,220,0,0"/>
+                    <Button x:Name="BT_Dodaj" Content="Dodaj" HorizontalAlignment="Left" VerticalAlignment="Top" Width="513" Margin="0,240,-0.2,0" Height="46" Click="Button_Click"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Przeglądaj" Height="22" Margin="-2.2,-2,-2.4,0" VerticalAlignment="Top">
                 <Grid Background="#FFE5E5E5">
-                    <CheckBox Content="Pokaż tylko ważne" HorizontalAlignment="Left" Margin="340,80,0,0" VerticalAlignment="Top"/>
-                    <Button Content="Usuń zaznaczone" HorizontalAlignment="Left" Margin="340,120,0,0" VerticalAlignment="Top" Width="117"/>
-                    <ListBox HorizontalAlignment="Left" Height="200" VerticalAlignment="Top" Width="250"/>
+                    <CheckBox Content="Pokaż tylko ważne" HorizontalAlignment="Left" Margin="340,80,0,0" VerticalAlignment="Top" Checked="CheckBox_Checked"/>
+                    <Button Content="Usuń zaznaczone" HorizontalAlignment="Left" Margin="340,120,0,0" VerticalAlignment="Top" Width="117" Click="Button_Click_1"/>
+                    <ListBox x:Name="LB_01" HorizontalAlignment="Left" Height="200" VerticalAlignment="Top" Width="250"/>
                 </Grid>
             </TabItem>
         </TabControl>
-
-
     </Grid>
 </Window>

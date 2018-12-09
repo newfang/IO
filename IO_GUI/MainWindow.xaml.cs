@@ -20,9 +20,44 @@ namespace IO_GUI
     /// </summary>
     public partial class MainWindow : Window
     {
+        public class CalData
+        {
+            public string Desc { get; set; }
+            public string Date { get; set; }
+            public bool Imp { get; set; }
+        }
+
+        CalData curData = new CalData();
+        public List<CalData> allList = new List<CalData>();
+
         public MainWindow()
         {
             InitializeComponent();
         }
+
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            curData.Desc = TXB_01.Text;
+            curData.Date = DB.SelectedDate.Value.Date.ToString();
+            curData.Imp = (bool)CHB_01.IsChecked;
+            allList.Add(curData);
+            LB_01.Items.Add(curData.Date + curData.Desc);
+        }
+
+        private void CheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            foreach (var cData in collection)
+            {
+
+            }
+        }
+
+
     }
 }
