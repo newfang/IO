@@ -1,0 +1,3 @@
+﻿  Lab7.cpp
+c:\users\tomasz.tmp-nbdelln\onedrive\01_studia\02_inf\a3_io\io\lab7\lab7.cpp(35): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  Lab7.vcxproj -> C:\Users\Tomasz.TMP-NBDELLN\OneDrive\01_STUDIA\02_INF\A3_IO\IO\Debug\LAB7.exe
