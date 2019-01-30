@@ -90,6 +90,7 @@
     </ClCompile>
     <ClCompile Include="TiU.cpp" />
     <ClCompile Include="TiU_Plaszczyk_Slapek.cpp" />
+    <ClCompile Include="TiU_Slapek_Plaszczyk.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

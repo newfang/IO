@@ -38,5 +38,8 @@
     <ClCompile Include="TiU_Plaszczyk_Slapek.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="TiU_Slapek_Plaszczyk.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
