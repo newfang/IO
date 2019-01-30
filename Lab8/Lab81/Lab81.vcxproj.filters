@@ -26,10 +26,10 @@
     <ClCompile Include="stdafx.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Lab81.cpp">
+    <ClCompile Include="Lab813.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\LAB7\Lab72.cpp">
+    <ClCompile Include="Lab82.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

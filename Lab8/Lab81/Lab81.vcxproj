@@ -155,8 +155,8 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\LAB7\Lab72.cpp" />
-    <ClCompile Include="Lab81.cpp" />
+    <ClCompile Include="Lab82.cpp" />
+    <ClCompile Include="Lab813.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
