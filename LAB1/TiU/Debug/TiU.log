@@ -1,0 +1,5 @@
+﻿  TiU.cpp
+  TiU_Plaszczyk_Slapek.cpp
+  Generating Code...
+bib-1.obj : warning LNK4099: PDB 'vc100.pdb' was not found with 'bib-1.obj' or at 'D:\Pliki\Tomasz\Documents\Tomek\OneDrive\01_STUDIA\02_INF\A3_IO\IO\LAB1\Debug\vc100.pdb'; linking object as if no debug info
+  TiU.vcxproj -> D:\Pliki\Tomasz\Documents\Tomek\OneDrive\01_STUDIA\02_INF\A3_IO\IO\LAB1\Debug\TiU.exe
